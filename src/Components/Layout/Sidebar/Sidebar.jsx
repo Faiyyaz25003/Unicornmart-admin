@@ -13,8 +13,9 @@ import {
   UserPlus,
 } from "lucide-react";
 import Dashboard from "@/Components/Dashboard/Dashboard";
-import ProductApprove from "@/Components/ProductApprove/ProductApprove";
+import ProductApprove from "@/Components/Product/ProductApprove/ProductApprove";
 import UserList from "@/Components/UserList/UserList";
+import ProductUpload from "@/Components/Product/ProductUpload/ProductUpload";
 
 export default function Sidebar() {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -35,6 +36,7 @@ export default function Sidebar() {
 
   const menuItems = [
     { id: "dashboard", name: "Dashboard", icon: LayoutDashboard },
+    { id: "Product", name: "Product Upload", icon: CalendarCheck },
     { id: "ProductApprove", name: "Product Approve", icon: CalendarCheck },
     { id: "userList", name: "User List", icon: CalendarCheck },
   ];
@@ -50,6 +52,8 @@ export default function Sidebar() {
         return <Dashboard />;
       case "ProductApprove":
         return <ProductApprove />;
+      case "Product":
+        return <ProductUpload />;
       case "userList":
         return <UserList />;
       default:
