@@ -1,13 +1,13 @@
-import Navbar from '@/Components/Layout/Navbar/Navbar'
-import Sidebar from '@/Components/Layout/Sidebar/Sidebar'
+import AdminLogin from '@/Components/Auth/Login/Login'
+
 
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <Navbar />
-      <Sidebar/>
+     <AdminLogin/>
+      
     </div>
   )
 }
