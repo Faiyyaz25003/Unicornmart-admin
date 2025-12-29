@@ -17,6 +17,7 @@ import ProductApprove from "@/Components/Product/ProductApprove/ProductApprove";
 import UserList from "@/Components/UserList/UserList";
 import ProductUpload from "@/Components/Product/ProductUpload/ProductUpload";
 import OrderList from "@/Components/OrderList/OrderList";
+import ContactList from "@/Components/ContactList/ContactList";
 
 export default function Sidebar() {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -40,6 +41,7 @@ export default function Sidebar() {
     { id: "Product", name: "Product Upload", icon: CalendarCheck },
     { id: "ProductApprove", name: "Product Approve", icon: CalendarCheck },
     { id: "orderList", name: "Order List", icon: CalendarCheck },
+    { id: "contactList", name: "Contact List", icon: CalendarCheck },
     { id: "userList", name: "User List", icon: CalendarCheck },
   ];
 
@@ -58,6 +60,8 @@ export default function Sidebar() {
         return <ProductUpload />;
       case "orderList":
         return <OrderList />;
+      case "contactList":
+        return<ContactList/>
       case "userList":
         return <UserList />;
       default:
@@ -107,7 +111,7 @@ export default function Sidebar() {
           }`}
         >
           <Image
-            src="/logo.jpeg"
+            src="/unicornmat.jpg"
             alt="Logo"
             width={isCollapsed && !isMobile ? 50 : 80}
             height={isCollapsed && !isMobile ? 50 : 80}
