@@ -18,6 +18,7 @@ import UserList from "@/Components/UserList/UserList";
 import ProductUpload from "@/Components/Product/ProductUpload/ProductUpload";
 import OrderList from "@/Components/OrderList/OrderList";
 import ContactList from "@/Components/ContactList/ContactList";
+import Profile from "@/Components/Profile/Profile";
 
 export default function Sidebar() {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -43,6 +44,7 @@ export default function Sidebar() {
     { id: "orderList", name: "Order List", icon: CalendarCheck },
     { id: "contactList", name: "Contact List", icon: CalendarCheck },
     { id: "userList", name: "User List", icon: CalendarCheck },
+    { id: "profile", name: "Profile", icon: CalendarCheck },
   ];
 
   const handleLinkClick = (id) => {
@@ -64,6 +66,8 @@ export default function Sidebar() {
         return<ContactList/>
       case "userList":
         return <UserList />;
+      case "profile":
+        return <Profile />;
       default:
         return <Dashboard />;
     }
