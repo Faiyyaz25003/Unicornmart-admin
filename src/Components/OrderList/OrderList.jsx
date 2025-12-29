@@ -1,78 +1,3 @@
-// "use client";
-
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-
-// const OrderList = () => {
-//   const [orders, setOrders] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const fetchOrders = async () => {
-//       try {
-//         const response = await axios.get("http://localhost:5000/api/orders");
-//         setOrders(response.data);
-//       } catch (error) {
-//         console.error("Error fetching orders:", error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchOrders();
-//   }, []);
-
-//   if (loading) return <p className="text-center mt-10">Loading orders...</p>;
-
-//   return (
-//     <div className="max-w-5xl mx-auto p-6">
-//       <h1 className="text-3xl font-bold mb-6">All Orders</h1>
-//       {orders.length === 0 ? (
-//         <p>No orders placed yet.</p>
-//       ) : (
-//         <div className="space-y-4">
-//           {orders.map((order) => (
-//             <div
-//               key={order._id}
-//               className="border p-4 rounded-lg shadow hover:shadow-md transition"
-//             >
-//               <p>
-//                 <span className="font-semibold">Name:</span> {order.name}
-//               </p>
-//               <p>
-//                 <span className="font-semibold">Phone:</span> {order.phone}
-//               </p>
-//               <p>
-//                 <span className="font-semibold">Product:</span>{" "}
-//                 {order.productName}
-//               </p>
-//               <p>
-//                 <span className="font-semibold">Quantity:</span>{" "}
-//                 {order.quantity} Kg
-//               </p>
-//               <p>
-//                 <span className="font-semibold">Price per Kg:</span> ₹
-//                 {order.productPrice}
-//               </p>
-//               <p>
-//                 <span className="font-semibold">Total:</span> ₹{order.total}
-//               </p>
-//               <p>
-//                 <span className="font-semibold">Address:</span> {order.address}
-//               </p>
-//               <p className="text-sm text-gray-500">
-//                 Placed on: {new Date(order.createdAt).toLocaleString()}
-//               </p>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default OrderList;
-
 
 "use client";
 import React, { useEffect, useState } from "react";
@@ -88,6 +13,7 @@ import {
   MapPin,
   Calendar,
   Tag,
+  Mail,
 } from "lucide-react";
 
 const OrderList = () => {
@@ -122,6 +48,7 @@ const OrderList = () => {
         (order) =>
           order.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           order.phone?.includes(searchTerm) ||
+          order.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           order.productName?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
@@ -241,9 +168,17 @@ const OrderList = () => {
                             <h3 className="font-semibold text-lg text-gray-800">
                               {order.name}
                             </h3>
-                            <div className="flex items-center gap-2 text-gray-600 text-sm">
-                              <Phone className="w-4 h-4" />
-                              <span>{order.phone}</span>
+                            <div className="flex flex-col gap-1">
+                              {order.email && (
+                                <div className="flex items-center gap-2 text-gray-600 text-sm">
+                                  <Mail className="w-4 h-4" />
+                                  <span>{order.email}</span>
+                                </div>
+                              )}
+                              <div className="flex items-center gap-2 text-gray-600 text-sm">
+                                <Phone className="w-4 h-4" />
+                                <span>{order.phone}</span>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -322,18 +257,23 @@ const OrderList = () => {
                       <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
                         <User className="w-6 h-6 text-indigo-600" />
                       </div>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-gray-800 truncate">
                           {order.name}
                         </h3>
-                        <p className="text-sm text-gray-600">{order.phone}</p>
+                        {order.email && (
+                          <p className="text-xs text-gray-600 truncate">
+                            {order.email}
+                          </p>
+                        )}
+                        <p className="text-xs text-gray-600">{order.phone}</p>
                       </div>
                     </div>
 
                     <div className="space-y-3 mb-4">
                       <div className="flex items-center gap-2">
                         <Package className="w-4 h-4 text-gray-400" />
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                           <p className="text-xs text-gray-500">Product</p>
                           <p className="font-medium text-sm text-gray-800 truncate">
                             {order.productName}
@@ -353,7 +293,7 @@ const OrderList = () => {
 
                       <div className="flex items-center gap-2">
                         <MapPin className="w-4 h-4 text-gray-400" />
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                           <p className="text-xs text-gray-500">Address</p>
                           <p className="font-medium text-sm text-gray-800 truncate">
                             {order.address}
