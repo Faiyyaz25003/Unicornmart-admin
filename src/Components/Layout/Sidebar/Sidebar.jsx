@@ -16,6 +16,7 @@ import Dashboard from "@/Components/Dashboard/Dashboard";
 import ProductApprove from "@/Components/Product/ProductApprove/ProductApprove";
 import UserList from "@/Components/UserList/UserList";
 import ProductUpload from "@/Components/Product/ProductUpload/ProductUpload";
+import OrderList from "@/Components/OrderList/OrderList";
 
 export default function Sidebar() {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -38,6 +39,7 @@ export default function Sidebar() {
     { id: "dashboard", name: "Dashboard", icon: LayoutDashboard },
     { id: "Product", name: "Product Upload", icon: CalendarCheck },
     { id: "ProductApprove", name: "Product Approve", icon: CalendarCheck },
+    { id: "orderList", name: "Order List", icon: CalendarCheck },
     { id: "userList", name: "User List", icon: CalendarCheck },
   ];
 
@@ -54,6 +56,8 @@ export default function Sidebar() {
         return <ProductApprove />;
       case "Product":
         return <ProductUpload />;
+      case "orderList":
+        return <OrderList />;
       case "userList":
         return <UserList />;
       default:
