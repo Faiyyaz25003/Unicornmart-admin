@@ -526,7 +526,7 @@ const ProductApprove = () => {
                               Please verify product condition and quantity
                               before finalizing the purchase. Contact seller for
                               bulk orders or special requirements.
-                            </p>
+                            </p>  
                           </div>
                         </div>
                       </>
