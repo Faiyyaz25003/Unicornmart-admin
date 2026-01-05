@@ -19,6 +19,7 @@ import ProductUpload from "@/Components/Product/ProductUpload/ProductUpload";
 import OrderList from "@/Components/OrderList/OrderList";
 import ContactList from "@/Components/ContactList/ContactList";
 import Profile from "@/Components/Profile/Profile";
+import ComplaintsList from "@/Components/ComplaintList/ComplaintList";
 
 export default function Sidebar() {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -43,6 +44,7 @@ export default function Sidebar() {
     { id: "ProductApprove", name: "Product Approve", icon: CalendarCheck },
     { id: "orderList", name: "Order List", icon: CalendarCheck },
     { id: "contactList", name: "Contact List", icon: CalendarCheck },
+    { id: "complaintList", name: "Complaint List", icon: CalendarCheck },
     { id: "userList", name: "User List", icon: CalendarCheck },
     { id: "profile", name: "Profile", icon: CalendarCheck },
   ];
@@ -63,7 +65,9 @@ export default function Sidebar() {
       case "orderList":
         return <OrderList />;
       case "contactList":
-        return<ContactList/>
+        return <ContactList />
+      case "complaintList":
+        return <ComplaintsList />;
       case "userList":
         return <UserList />;
       case "profile":

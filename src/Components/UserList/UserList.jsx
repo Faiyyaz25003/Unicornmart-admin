@@ -23,7 +23,7 @@ export default function UsersList() {
   const [filterRole, setFilterRole] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
   const [token, setToken] = useState("");
-  const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'list'
+  const [viewMode, setViewMode] = useState("list"); // 'grid' or 'list'
 
   // Get token from localStorage on mount
   useEffect(() => {
